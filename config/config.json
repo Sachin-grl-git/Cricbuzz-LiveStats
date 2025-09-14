@@ -1,14 +1,9 @@
 {
   "API": {
     "CRICBUZZ_RAPIDAPI_HOST": "cricbuzz-cricket.p.rapidapi.com",
-    "CRICBUZZ_RAPIDAPI_KEY": "YOUR_API_KEY"
+    "CRICBUZZ_RAPIDAPI_KEY": "aad969cdc1mshdcb661b03538489p17b3b9jsn13fac951e6af"
   },
   "DB": {
-    "DB_TYPE": "mysql+pymysql",
-    "USER": "root",
-    "PASSWORD": "1234",
-    "HOST": "localhost",
-    "PORT": 3306,
-    "DB_NAME": "cricbuzz_db"
+    "DB_TYPE": "sqlite:///cricbuzz.db"
   }
 }

@@ -1,15 +1,27 @@
-import requests, json, os
+import requests
+import json
+import os
+
+# Load config
+config_path = os.path.join("config", "config.json")
+with open(config_path, "r") as f:
+    config = json.load(f)
 
 def fetch_live_matches():
-    config_path = os.path.join(os.path.dirname(__file__), "..", "config", "config.json")
-    with open(config_path) as f:
-        config = json.load(f)
-
     url = f"https://{config['API']['CRICBUZZ_RAPIDAPI_HOST']}/matches/v1/live"
     headers = {
-        "x-rapidapi-key": config['API']['CRICBUZZ_RAPIDAPI_KEY'],
-        "x-rapidapi-host": config['API']['CRICBUZZ_RAPIDAPI_HOST']
+        "x-rapidapi-host": config["API"]["CRICBUZZ_RAPIDAPI_HOST"],
+        "x-rapidapi-key": config["API"]["CRICBUZZ_RAPIDAPI_KEY"]
     }
-
     response = requests.get(url, headers=headers)
-    return response.json() if response.status_code == 200 else {}
+    return response.json()
+
+# ✅ New function for upcoming matches
+def fetch_upcoming_matches():
+    url = f"https://{config['API']['CRICBUZZ_RAPIDAPI_HOST']}/matches/v1/upcoming"
+    headers = {
+        "x-rapidapi-host": config["API"]["CRICBUZZ_RAPIDAPI_HOST"],
+        "x-rapidapi-key": config["API"]["CRICBUZZ_RAPIDAPI_KEY"]
+    }
+    response = requests.get(url, headers=headers)
+    return response.json()
